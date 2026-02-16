@@ -3,31 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Telegram Mini App</title>
-    <!-- 텔레그램 SDK 로드 (필수) -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Telegram Grid Menu</title>
+    <script src="https://telegram.org"></script>
     <style>
         body {
-            background-color: var(--tg-theme-bg-color, #ffffff);
-            color: var(--tg-theme-text-color, #222222);
-            font-family: sans-serif;
+            background-color: var(--tg-theme-secondary-bg-color, #f0f0f0);
+            color: var(--tg-theme-text-color, #222);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
         }
-        button {
-            background-color: var(--tg-theme-button-color, #248bcf);
-            color: var(--tg-theme-button-text-color, #ffffff);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .user-info { margin-bottom: 20px; text-align: center; }
+
+        .header { text-align: center; margin-bottom: 25px; }
 
         /* 2x2 표(그리드) 형식 레이아웃 */
         .grid-container {
@@ -37,15 +27,35 @@
             width: 100%;
             max-width: 400px;
         }
+
+        .menu-btn {
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-button-color, #248bcf);
+            border: 1px solid var(--tg-theme-hint-color, #ccc);
+            border-radius: 12px;
+            padding: 25px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .menu-btn:active {
+            transform: scale(0.95);
+            background-color: var(--tg-theme-secondary-bg-color);
+        }
+
+        .icon { font-size: 24px; margin-bottom: 8px; }
     </style>
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p id="user-name">사용자 정보를 불러오는 중...</p>
-    <button onclick="closeApp()">앱 닫기</button>
-        <div class="header">
-        <h2 id="welcome-msg">안녕하세요!</h2>
-        <p>원하는 메뉴를 선택하세요</p>
+
+    <div class="header">
     </div>
 
     <!-- 4개 버튼 그리드 -->
@@ -67,18 +77,24 @@
             환경 설정
         </button>
     </div>
-    <script>
-        // SDK 초기화 및 사용자 정보 가져오기
-        const tg = window.Telegram.WebApp;
-        tg.ready(); // 앱이 준비되었음을 알림
 
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        tg.ready();
+
+        // 사용자 이름 가져오기
         const user = tg.initDataUnsafe?.user;
         if (user) {
-            document.getElementById('user-name').innerText = `반갑습니다, ${user.first_name}님!`;
+            document.getElementById('welcome-msg').innerText = `${user.first_name}님, 환영합니다!`;
         }
 
-        function closeApp() {
-            tg.close(); // 미니 앱 닫기
+        // 버튼 클릭 핸들러
+        function handleAction(name) {
+            tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
+            tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
+            
+            // 향후 Vercel API 연동 시 fetch('/api/action', { ... }) 형태로 사용
         }
     </script>
 </body>
