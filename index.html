@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Telegram Mini App</title>
+    <!-- 텔레그램 SDK 로드 (필수) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>안녕하세요!</h1>
+    <p id="user-name">사용자 정보를 불러오는 중...</p>
+    <button onclick="closeApp()">앱 닫기</button>
+
+    <script>
+        // SDK 초기화 및 사용자 정보 가져오기
+        const tg = window.Telegram.WebApp;
+        tg.ready(); // 앱이 준비되었음을 알림
+
+        const user = tg.initDataUnsafe?.user;
+        if (user) {
+            document.getElementById('user-name').innerText = `반갑습니다, ${user.first_name}님!`;
+        }
+
+        function closeApp() {
+            tg.close(); // 미니 앱 닫기
+        }
+    </script>
+</body>
+</html>
