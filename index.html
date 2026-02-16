@@ -28,13 +28,45 @@
             font-size: 16px;
         }
         .user-info { margin-bottom: 20px; text-align: center; }
+
+        /* 2x2 표(그리드) 형식 레이아웃 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2열 */
+            gap: 15px; /* 버튼 사이 간격 */
+            width: 100%;
+            max-width: 400px;
+        }
     </style>
 </head>
 <body>
     <h1>안녕하세요!</h1>
     <p id="user-name">사용자 정보를 불러오는 중...</p>
     <button onclick="closeApp()">앱 닫기</button>
+        <div class="header">
+        <h2 id="welcome-msg">안녕하세요!</h2>
+        <p>원하는 메뉴를 선택하세요</p>
+    </div>
 
+    <!-- 4개 버튼 그리드 -->
+    <div class="grid-container">
+        <button class="menu-btn" onclick="handleAction('프로필')">
+            <span class="icon">👤</span>
+            내 정보
+        </button>
+        <button class="menu-btn" onclick="handleAction('랭킹')">
+            <span class="icon">🏆</span>
+            랭킹 확인
+        </button>
+        <button class="menu-btn" onclick="handleAction('상점')">
+            <span class="icon">🛒</span>
+            아이템 샵
+        </button>
+        <button class="menu-btn" onclick="handleAction('설정')">
+            <span class="icon">⚙️</span>
+            환경 설정
+        </button>
+    </div>
     <script>
         // SDK 초기화 및 사용자 정보 가져오기
         const tg = window.Telegram.WebApp;
