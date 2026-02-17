@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   }
   
   // 로그 추가: 요청 데이터 확인 (Vercel Logs 탭에서 확인 가능)
-  console.log("요청 데이터:", { chat_init_id, text, tokenExists: !!token });
+  // console.log("요청 데이터:", { chat_init_id, text, tokenExists: !!token });
 
   try {
     // 텔레그램 API 호출 (메시지 보내기)
