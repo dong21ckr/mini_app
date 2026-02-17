@@ -92,7 +92,7 @@
         }
 
         // 버튼 클릭 핸들러
-        function handleAction(name) {
+        async function handleAction(name) {
             tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
             tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
             
