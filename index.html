@@ -97,6 +97,22 @@
             tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
             
             // 향후 Vercel API 연동 시 fetch('/api/action', { ... }) 형태로 사용
+            // Vercel API 호출
+            const response = await fetch('/api/bot', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: tg.initDataUnsafe?.user?.id, // 현재 사용자 ID
+                    text: `<b>[${name}]</b> 메뉴가 클릭되었습니다! 🚀`
+                })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                tg.showAlert(`${name} 요청이 봇에게 전달되었습니다.`);
+            } else {
+                tg.showConfirm(`에러 발생: ${result.error}`);
+            }
         }
     </script>
 </body>
