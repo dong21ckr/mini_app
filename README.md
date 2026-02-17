@@ -105,3 +105,18 @@ export default async function handler(req, res) {
 Vercel 대시보드에서 프로젝트를 연결합니다.
 Settings > Environment Variables에 TELEGRAM_BOT_TOKEN을 추가합니다.
 @BotFather에게 미니 앱 URL을 등록합니다
+
+
+# 기타 참고 
+```
+1. 텔레그램 웹(Web) 버전 활용 (가장 간편)
+봇을 추가하기 번거롭다면 텔레그램 웹(web.telegram.org)에 접속해 주소창의 URL을 확인하세요. 
+개인 채팅/그룹: 채팅방을 클릭하면 브라우저 주소창이 https://web.telegram.org 형태가 됩니다. 이때 # 뒤의 숫자가 바로 해당 채팅방의 ID입니다.
+주의: 그룹이나 채널의 경우 숫자 앞에 -100을 붙여야 하는 경우가 많습니다 (예: 123456789 -> -100123456789). 
+
+2. 봇 API 'getUpdates' 활용 (개발자용)
+본인이 만든 봇의 토큰이 있다면, 브라우저 주소창에 아래 주소를 입력하여 실시간 메시지 로그(JSON)에서 ID를 추출할 수 있습니다.
+주소: https://api.telegram.org/bot{본인의_봇_토큰}/getUpdates.
+방법: 위 페이지를 띄운 상태에서 해당 봇에게 아무 메시지나 보낸 후 페이지를 새로고침하세요. result 항목 안의 "chat": {"id": -100xxxxxx} 부분에서 ID를 확인할 수 있습니다. 
+``` 
+
