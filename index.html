@@ -52,34 +52,6 @@
 
         .icon { font-size: 24px; margin-bottom: 8px; }
     </style>
-</head>
-<body>
-
-    <div class="header">
-        <h1 id="welcome-msg">환영합니다!</h1>
-        <p>아래 메뉴에서 원하는 항목을 선택하세요.</p>
-    </div>
-
-    <!-- 4개 버튼 그리드 -->
-    <div class="grid-container">
-        <button class="menu-btn" onclick="handleAction('tses')">
-            <span class="icon">👤</span>
-            내 정보
-        </button>
-        <button class="menu-btn" onclick="handleAction('랭킹')">
-            <span class="icon">🏆</span>
-            랭킹 확인
-        </button>
-        <button class="menu-btn" onclick="handleAction('상점')">
-            <span class="icon">🛒</span>
-            아이템 샵
-        </button>
-        <button class="menu-btn" onclick="handleAction('설정')">
-            <span class="icon">⚙️</span>
-            환경 설정
-        </button>
-    </div>
-
     <script type="module">
         const tg = window.Telegram.WebApp;
         tg.ready();
@@ -115,5 +87,31 @@
             }
         }
     </script>
+</head>
+<body>
+    <div class="header">
+        <h1 id="welcome-msg">환영합니다!</h1>
+        <p>아래 메뉴에서 원하는 항목을 선택하세요.</p>
+    </div>
+
+    <!-- 4개 버튼 그리드 -->
+    <div class="grid-container">
+        <button class="menu-btn" onclick="handleAction('tses')">
+            <span class="icon">👤</span>
+            내 정보
+        </button>
+        <button class="menu-btn" onclick="handleAction('랭킹')">
+            <span class="icon">🏆</span>
+            랭킹 확인
+        </button>
+        <button class="menu-btn" onclick="handleAction('상점')">
+            <span class="icon">🛒</span>
+            아이템 샵
+        </button>
+        <button class="menu-btn" onclick="handleAction('설정')">
+            <span class="icon">⚙️</span>
+            환경 설정
+        </button>
+    </div>
 </body>
 </html>
