@@ -62,7 +62,7 @@
 
     <!-- 4개 버튼 그리드 -->
     <div class="grid-container">
-        <button class="menu-btn" onclick="handleAction('프로필')">
+        <button class="menu-btn" onclick="handleAction('tses')">
             <span class="icon">👤</span>
             내 정보
         </button>
@@ -82,9 +82,9 @@
 
     <script type="module">
         const tg = window.Telegram.WebApp;
-        tg.expand();
         tg.ready();
-
+        tg.expand();
+        
         // 사용자 이름 가져오기
         const user = tg.initDataUnsafe?.user;
         if (user) {
