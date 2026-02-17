@@ -6,13 +6,14 @@ export default async function handler(req, res) {
 
   // 2. Vercel 환경변수에서 봇 토큰 가져오기
   const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chat_ids = process.env.CHAT_ID;
   
   if (!token) {
     return res.status(500).json({ error: 'Bot token not configured' });
   }
 
   // 3. 클라이언트(미니 앱)에서 보낸 데이터 받기
-  const { chat_id, text } = req.body;
+  const { chat_id: client_chat_id, text } = req.body;
 
   if (!chat_id || !text) {
     return res.status(400).json({ error: 'Missing chat_id or text' });
@@ -26,7 +27,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: Number(chat_id),
+        chat_id: Number(chat_ids), // 환경변수에서 가져온 chat_id 사용
         text: text,
         parse_mode: 'HTML' // HTML 태그 사용 가능
       }),
