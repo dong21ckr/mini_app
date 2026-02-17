@@ -14,10 +14,6 @@ export default async function handler(req, res) {
 
   // 3. 클라이언트(미니 앱)에서 보낸 데이터 받기
   const { chat_id: client_chat_id, text } = req.body;
-
-  if (!chat_id || !text) {
-    return res.status(400).json({ error: 'Missing chat_id or text' });
-  }
   
   // 로그 추가: 요청 데이터 확인 (Vercel Logs 탭에서 확인 가능)
   console.log("요청 데이터:", { chat_id, text, tokenExists: !!token });
