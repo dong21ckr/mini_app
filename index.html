@@ -62,8 +62,8 @@
         // 사용자 이름 가져오기
         const user = tg.initDataUnsafe?.user;
         // const userFirstName = user?.first_name || "사용자";
-        // const env_user = process.env.USER;
-        console.log("로그인 사용자:", user);
+        const env_user = process.env.USER;
+        console.log("로그인 사용자:", user,env_user);
         // 버튼 클릭 핸들러
         async function handleAction(name) {
             // if (env_user && env_user !== userFirstName) {
