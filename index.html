@@ -75,14 +75,14 @@
             tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
             //tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
             
-            // 향후 Vercel API 연동 시 fetch('/api/action', { ... }) 형태로 사용
-            // Vercel API 호출
+            // 향후 Vercel API 연동 시 fetch('/api/action', { ... }) 형태로 사용 / Vercel API 호출
             const response = await fetch('/api/bot', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: tg.initDataUnsafe?.user?.id, // 현재 사용자 ID
-                    text: `<b>[${name}]</b> 메뉴가 클릭되었습니다! 🚀`
+                    //text: `<b>[${name}]</b> 메뉴가 클릭되었습니다! 🚀`
+                    text: `${name}`
                 })
             });
 
