@@ -16,14 +16,16 @@ export default async function handler(req, res) {
   // 클라이언트(미니 앱)에서 보낸 데이터 받기  
   const { chat_init_id, text } = req.body;
 
+  // 로그 추가: 요청 데이터 확인 (Vercel Logs 탭에서 확인 가능)
+  console.log("요청 데이터:", { chat_id,chat_init_id, env_chat_id, text, tokenExists: !!token });
+
+
   // chat_init_id 검증: 환경변수에 설정된 chat_init_id와 비교
   if ( env_chat_id && chat_init_id !== env_chat_id) {
     return res.status(403).json({ error: 'Unauthorized: chat_init_id does not match' });
   }
   
-  // 로그 추가: 요청 데이터 확인 (Vercel Logs 탭에서 확인 가능)
-  // console.log("요청 데이터:", { chat_init_id, text, tokenExists: !!token });
-
+  
   try {
     // 텔레그램 API 호출 (메시지 보내기)
     const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
