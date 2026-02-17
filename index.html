@@ -61,9 +61,7 @@
 
         // 사용자 이름 가져오기
         const user = tg.initDataUnsafe?.user;
-        // const userFirstName = user?.first_name || "사용자";
-        const env_user = process.env.USER;
-        tg.showAlert(`${user.first_name} (${env_user})`); 
+                
         // 버튼 클릭 핸들러
         async function handleAction(name) {
             // if (env_user && env_user !== userFirstName) {
@@ -80,7 +78,7 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    chat_id: tg.initDataUnsafe?.user?.id, // 현재 사용자 ID
+                    chat_init_id: tg.initDataUnsafe?.user?.id, // 현재 사용자 ID
                     //text: `<b>[${name}]</b> 메뉴가 클릭되었습니다! 🚀`
                     text: `${name}`
                 })

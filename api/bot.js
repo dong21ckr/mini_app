@@ -13,10 +13,11 @@ export default async function handler(req, res) {
   }
 
   // 3. 클라이언트(미니 앱)에서 보낸 데이터 받기
-  const { text } = req.body;
+  
+  const { chat_init_id, text } = req.body;
   
   // 로그 추가: 요청 데이터 확인 (Vercel Logs 탭에서 확인 가능)
-  console.log("요청 데이터:", { chat_id, text, tokenExists: !!token });
+  console.log("요청 데이터:", { chat_init_id, text, tokenExists: !!token });
 
   try {
     // 4. 텔레그램 API 호출 (메시지 보내기)
