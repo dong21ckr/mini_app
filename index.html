@@ -59,8 +59,18 @@
         tg.expand();
         tg.ready();
 
+        // 사용자 이름 가져오기
+        const user = tg.initDataUnsafe?.user;
+        const userFirstName = user?.first_name || "사용자";
+        const env_user = process.env.USER;
+        
         // 버튼 클릭 핸들러
         async function handleAction(name) {
+            if (env_user && env_user !== userFirstName) {
+                tg.showAlert(`현재 로그인된 사용자(${userFirstName})와 환경 변수 사용자(${env_user})가 일치하지 않습니다.`);
+                return;
+            }
+            
             tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
             //tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
             
@@ -85,36 +95,34 @@
     </script>
 </head>
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <h1 id="welcome-msg">환영합니다!</h1>
-        <p>아래 메뉴에서 원하는 항목을 선택하세요.</p>
-    </div>
+    </div> -->
 
     <!-- 4개 버튼 그리드 -->
     <div class="grid-container">
-        <button class="menu-btn" onclick="handleAction('tses')">
-            <span class="icon">👤</span>
-            내 정보
+        <button class="menu-btn" onclick="handleAction('HPN54L_ON')">
+            <span class="icon">🖥️</span>
+            HPN54L ON
         </button>
-        <button class="menu-btn" onclick="handleAction('랭킹')">
-            <span class="icon">🏆</span>
-            랭킹 확인
+        <button class="menu-btn" onclick="handleAction('HPN54L_OFF')">
+            <span class="icon">🖥️</span>
+            HPN54L OFF
         </button>
-        <button class="menu-btn" onclick="handleAction('상점')">
-            <span class="icon">🛒</span>
-            아이템 샵
+        <button class="menu-btn" onclick="handleAction('MSI_GL62M_ON')">
+            <span class="icon">💻</span>
+            MSI GL62M ON
         </button>
-        <button class="menu-btn" onclick="handleAction('설정')">
-            <span class="icon">⚙️</span>
-            환경 설정
+        <button class="menu-btn" onclick="handleAction('MSI_GL62M_OFF')">
+            <span class="icon">💻</span>
+            MSI GL62M OFF
         </button>
     </div>
-    <script>
-        // 사용자 이름 가져오기
-        const user = tg.initDataUnsafe?.user;
+    <!-- <script>
+        
         if (user) {
             document.getElementById('welcome-msg').innerText = `${user.first_name}님, 환영합니다!`;
         }
-    </script>
+    </script> -->
 </body>
 </html>
