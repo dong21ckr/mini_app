@@ -61,8 +61,8 @@
 
         // 사용자 이름 가져오기
         const user = tg.initDataUnsafe?.user;
-        const userFirstName = user?.first_name || "사용자";
-        const env_user = process.env.USER;
+        // const userFirstName = user?.first_name || "사용자";
+        // const env_user = process.env.USER;
         
         // 버튼 클릭 핸들러
         async function handleAction(name) {
@@ -70,8 +70,7 @@
             //     tg.showAlert(`현재 로그인된 사용자(${userFirstName})와 환경 변수 사용자(${env_user})가 일치하지 않습니다.`);
             //     return;
             // }
-            
-            console.log("로그인 사용자:", { env_user, env_user, userFirstName});
+            // console.log("로그인 사용자:", { env_user, env_user, userFirstName});
 
             tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
             //tg.showAlert(`${name} 메뉴를 클릭하셨습니다!`);
