@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    console.log("텔레그램 응답:", data); // 응답 결과 로그 남기기
+    //console.log("텔레그램 응답:", data); // 응답 결과 로그 남기기
 
     if (data.ok) {
       return res.status(200).json({ success: true, message: '전송 성공' });
