@@ -66,10 +66,11 @@
         
         // 버튼 클릭 핸들러
         async function handleAction(name) {
-            if (env_user && env_user !== userFirstName) {
-                tg.showAlert(`현재 로그인된 사용자(${userFirstName})와 환경 변수 사용자(${env_user})가 일치하지 않습니다.`);
-                return;
-            }
+            // if (env_user && env_user !== userFirstName) {
+            //     tg.showAlert(`현재 로그인된 사용자(${userFirstName})와 환경 변수 사용자(${env_user})가 일치하지 않습니다.`);
+            //     return;
+            // }
+            
             console.log("로그인 사용자:", { env_user, env_user, userFirstName});
 
             tg.HapticFeedback.impactOccurred('medium'); // 진동 효과
