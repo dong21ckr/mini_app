@@ -58,13 +58,6 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
         tg.ready();
-        
-        
-        // 사용자 이름 가져오기
-        const user = tg.initDataUnsafe?.user;
-        if (user) {
-            document.getElementById('welcome-msg').innerText = `${user.first_name}님, 환영합니다!`;
-        }
 
         // 버튼 클릭 핸들러
         async function handleAction(name) {
@@ -116,5 +109,12 @@
             환경 설정
         </button>
     </div>
+    <script>
+        // 사용자 이름 가져오기
+        const user = tg.initDataUnsafe?.user;
+        if (user) {
+            document.getElementById('welcome-msg').innerText = `${user.first_name}님, 환영합니다!`;
+        }
+    </script>
 </body>
 </html>
